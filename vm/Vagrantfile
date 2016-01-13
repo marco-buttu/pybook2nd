@@ -1,0 +1,34 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+$bootstrap=<<SCRIPT
+sudo apt-get update 
+sudo apt-get -y install \
+    git mercurial \
+    libssl-dev openssl \
+    libreadline6 libreadline6-dev \
+    libbz2-dev \
+    libsqlite3-dev \
+
+git clone https://github.com/yyuu/pyenv.git ~/.pyenv
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
+echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(pyenv init -)"' >> ~/.bashrc
+$HOME/.pyenv/bin/pyenv install 3.6-dev
+$HOME/.pyenv/bin/pyenv rehash
+$HOME/.pyenv/bin/pyenv global 3.6-dev
+$HOME/.pyenv/shims/pip install ipython
+SCRIPT
+
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+    config.vm.box = "ubuntu/trusty64"
+    config.vm.hostname = "pyhost"
+    config.vm.provision :shell, inline: $bootstrap, privileged: false
+
+    config.vm.provider :virtualbox do |vb|
+        vb.name = "Programmare con Python 2nd"
+        vb.customize ["modifyvm", :id, "--memory", "1024"]
+    end
+end
