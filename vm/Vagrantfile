@@ -31,4 +31,5 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         vb.name = "Programmare con Python 2nd"
         vb.customize ["modifyvm", :id, "--memory", "1024"]
     end
+  
 end
