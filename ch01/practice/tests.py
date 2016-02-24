@@ -1,6 +1,6 @@
 import unittest
 from unique import unique
-from onlyone import onlyone
+from onlyone import onlyone, onlyone_
 from square import Square
 
 
@@ -8,6 +8,9 @@ class TestUnique(unittest.TestCase):
 
     def test_unique(self):
         self.assertEqual(unique('programmare'), 4)
+
+
+class TestOnlyOne(unittest.TestCase):
 
     def test_onlyone(self):
         self.assertEqual(onlyone('programmare'), 7)
