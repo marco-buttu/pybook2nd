@@ -8,8 +8,10 @@ python:
 
 install:
   - pip install pytest
+  - pip install coveralls
 
-script: ./runtests.py
+script: 
+    - coverage run --pylib --include=`pwd`/ch*  runtests.py
 
 notifications:
   email: true
