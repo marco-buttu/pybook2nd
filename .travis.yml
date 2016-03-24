@@ -10,8 +10,9 @@ install:
   - pip install pytest
   - pip install coveralls
 
-script: 
-    - coverage run --pylib --include=`pwd`/ch*  runtests.py
+script: coverage run --pylib --include=`pwd`/ch*  runtests.py
+
+after_success: coveralls
 
 notifications:
   email: true
