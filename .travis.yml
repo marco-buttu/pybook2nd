@@ -7,7 +7,7 @@ python:
   - "3.6-dev"
 
 install:
-  - pip install py.test
+  - pip install pytest
 
 script:
   - runserver.py
