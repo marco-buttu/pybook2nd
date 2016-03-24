@@ -9,8 +9,7 @@ python:
 install:
   - pip install pytest
 
-script:
-  - runserver.py
+script: ./runserver.py
 
 notifications:
   email: true
