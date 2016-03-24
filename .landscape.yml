@@ -1,17 +1,11 @@
-doc-warnings: yes
-
-test-warnings: no
-
 strictness: veryhigh
 
-pep8:
-    full: true
+test-warnings: yes
 
 autodetect: yes
 
-ignore-paths:
-    - ch01/errors.py
-    - ch01/syntax_error.py
+ignore-patterns:
+    - ^ch(.*)/(.*).py$
 
 python-targets:
     - 3
