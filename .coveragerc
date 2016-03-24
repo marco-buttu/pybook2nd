@@ -1,3 +1,6 @@
+[run]
+include=ch*
+
 [report]
 
 exclude_lines =
