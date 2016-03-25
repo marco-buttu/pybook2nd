@@ -2,13 +2,14 @@ strictness: veryhigh
 
 test-warnings: true
 
-pylint:
-    disable:
-        - C0103
-
 autodetect: yes
 
+ignore-paths:
+    - runtests.py
+    - ch02/bytecode/
+
 ignore-patterns:
+    # Ignore everything is not in chXX/practice
     - ^ch[0-9]{2}/([a-z0-9_]*)\.py$
 
 python-targets:

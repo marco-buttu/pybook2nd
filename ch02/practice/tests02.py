@@ -2,13 +2,13 @@ import unittest
 from digit2word import digit2word, digit2word_2nd, digit2word_3rd
 
 
-mapping = {0: 'zero', 1: 'uno', 2: 'due', 3: 'tre', 4: 'quattro'}
+MAPPING = {0: 'zero', 1: 'uno', 2: 'due', 3: 'tre', 4: 'quattro'}
 
 
 class TestDigit2Word(unittest.TestCase):
 
     def test_right_value(self):
-        for key, value in mapping.items():
+        for key, value in MAPPING.items():
             self.assertEqual(digit2word(key), value)
             self.assertEqual(digit2word_2nd(key), value)
             self.assertEqual(digit2word_3rd(key), value)
