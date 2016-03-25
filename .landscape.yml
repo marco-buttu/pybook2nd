@@ -1,11 +1,15 @@
 strictness: veryhigh
 
-test-warnings: yes
+test-warnings: true
+
+pylint:
+    disable:
+        - C0103
 
 autodetect: yes
 
 ignore-patterns:
-    - ^ch(.*)/(.*).py$
+    - ^ch[0-9]{2}/([a-z0-9_]*)\.py$
 
 python-targets:
     - 3
