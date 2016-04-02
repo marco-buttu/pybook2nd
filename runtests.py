@@ -11,10 +11,12 @@ basepath = os.path.dirname(abspath)
 suite = unittest.TestSuite()
 test_loader = unittest.TestLoader()
 
-for chapter in range(1, 4):
-    newpath = '%s/ch%.02d/practice' % (basepath, chapter)
+files = os.listdir(basepath)
+chapters = [item for item in files if item.startswith('ch')]
+for chapter in chapters:
+    newpath = '%s/%s/practice' % (basepath, chapter)
     sys.path.append(newpath)
-    module = import_module('tests%.02d' % chapter)
+    module = import_module('tests_%s' % chapter)
     tests = test_loader.loadTestsFromModule(module)
     suite.addTests(tests)
     sys.path.remove(newpath)
