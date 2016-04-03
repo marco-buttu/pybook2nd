@@ -67,15 +67,12 @@ class TestGethits(unittest.TestCase):
     def test_radius1(self):
         hits = webstats.gethits(self.file, datetime.date(2016, 12, 31), 1)
         expected = [
-            '180.76.5.169',
             '79.56.87.148',
             '79.56.87.148',
             '79.56.87.148',
             '87.10.85.230',
             '87.10.85.230',
-            '54.234.72.18',
-            '54.234.72.18',
-            '95.10.51.244']
+            '54.234.72.18']
         self.assertListEqual(hits, expected)
 
     def test_radius2(self):
@@ -85,15 +82,12 @@ class TestGethits(unittest.TestCase):
             '66.249.73.89',
             '180.76.5.195',
             '66.249.73.89',
-            '180.76.5.169',
             '79.56.87.148',
             '79.56.87.148',
             '79.56.87.148',
             '87.10.85.230',
             '87.10.85.230',
-            '54.234.72.18',
-            '54.234.72.18',
-            '95.10.51.244']
+            '54.234.72.18']
         self.assertListEqual(hits, expected)
 
 

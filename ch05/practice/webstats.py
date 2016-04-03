@@ -48,7 +48,10 @@ def gethits(file, date_, radius):
     # strftime: [day/month/year:hour:minute:second time-zone]
     strftime = '[%d/%b/%Y:%H:%M:%S %z]'  # http://strftime.org/
     for line in file:
-        ip_address, hit_time = line.split(' - ')
+        try:
+            ip_address, hit_time = line.split(' - ')
+        except ValueError:
+            pass
         hit_date = datetime.strptime(hit_time.strip(), strftime)
         if abs(date_ - hit_date.date()) <= timedelta(days=radius):
             result.append(ip_address)
