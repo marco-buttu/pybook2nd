@@ -51,7 +51,7 @@ def gethits(file, date_, radius):
         try:
             ip_address, hit_time = line.split(' - ')
         except ValueError:
-            pass
+            continue
         hit_date = datetime.strptime(hit_time.strip(), strftime)
         if abs(date_ - hit_date.date()) <= timedelta(days=radius):
             result.append(ip_address)
