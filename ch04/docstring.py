@@ -1,2 +1,2 @@
-"""Esempio di docstring."""
+"""Sono una docstring."""
 print(__doc__)
