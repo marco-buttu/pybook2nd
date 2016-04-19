@@ -3,7 +3,6 @@ import argparse
 import collections
 from datetime import datetime, date, timedelta
 
-
 def str2date(string):
     """Data una stringa, restituisci un datetime.date.
 
@@ -14,7 +13,6 @@ def str2date(string):
         datetime.date(2017, 1, 16)
     """
     return date(*[int(item) for item in string.split()])
-
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
@@ -35,14 +33,14 @@ parser.add_argument(
 args = parser.parse_args()
 
 hits = []
-# strftime: [day/month/year:hour:minute:second time-zone]
-strftime = '[%d/%b/%Y:%H:%M:%S %z]'  # http://strftime.org/
+# strfmt: [day/month/year:hour:minute:second time-zone]
+strfmt = '[%d/%b/%Y:%H:%M:%S %z]'  # http://strftime.org/
 for line in args.file:
     try:
         ip_address, hit_time = line.split(' - ')
     except ValueError:
         continue
-    hit_date = datetime.strptime(hit_time.strip(), strftime)
+    hit_date = datetime.strptime(hit_time.strip(), strfmt)
     diff = args.date - hit_date.date()
     if abs(diff) <= timedelta(days=args.radius):
         hits.append(ip_address)
