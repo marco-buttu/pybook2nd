@@ -5,7 +5,7 @@ from pathlib import Path
 from argparse import ArgumentParser
 
 ROOTDIR = Path(__file__).parent
-LOGFILE = str(ROOTDIR.joinpath('test.log'))
+LOGFILE = str(ROOTDIR.joinpath('webstats.log'))
 
 parser = ArgumentParser()
 parser.add_argument('-f', '--file', default='webstats.py')
