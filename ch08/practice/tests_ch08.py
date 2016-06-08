@@ -1,6 +1,6 @@
 import unittest
 from bytelen import bytelen
-from myformat import myformat2
+from myformat import myformat
 
 class TestBytelen(unittest.TestCase):
 
@@ -17,14 +17,14 @@ class TestBytelen(unittest.TestCase):
 class TestMyformat(unittest.TestCase):
 
     def test_no_separtor(self):
-        self.assertEqual(myformat2(33, 4), '33.0000')
-        self.assertEqual(myformat2(33, 0), '33')
+        self.assertEqual(myformat(33, 4), '33.0000')
+        self.assertEqual(myformat(33, 0), '33')
 
     def test_separtor(self):
-        self.assertEqual(myformat2(1000, 4), '1,000.0000')
-        self.assertEqual(myformat2(1000, 0), '1,000')
-        self.assertEqual(myformat2(1000000, 4), '1,000,000.0000')
-        self.assertEqual(myformat2(1000000, 0), '1,000,000')
+        self.assertEqual(myformat(1000, 4), '1,000.0000')
+        self.assertEqual(myformat(1000, 0), '1,000')
+        self.assertEqual(myformat(1000000, 4), '1,000,000.0000')
+        self.assertEqual(myformat(1000000, 0), '1,000,000')
 
 
 if __name__ == '__main__':
