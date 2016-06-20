@@ -24,7 +24,7 @@ class TestRanges(unittest.TestCase):
             b'11:59:34.635-12:30:02.340;3\n'
         )
         self.check('test1.dat', expected)
-        
+
     def test_only_points(self):
         """Only points (no ranges): test2.png, test2.dat."""
         expected = (
@@ -32,7 +32,7 @@ class TestRanges(unittest.TestCase):
             b'12:30:02.340-12:30:02.340;5\n'
         )
         self.check('test2.dat', expected)
- 
+
     def test_points_and_ranges(self):
         """Points and ranges: test3.png, test3.dat."""
         expected = (
@@ -42,16 +42,16 @@ class TestRanges(unittest.TestCase):
             b'12:30:02.340-12:30:02.340;5\n'
         )
         self.check('test3.dat', expected)
- 
+
     def test_points_increment(self):
         """Increment of the `points` dictionary values.
-   
+
         Figure test4.png reports a case in which there are some
         starting times and ending times with the same value, but
         in the `time` list the starting times come after the ending
         times, and viceversa. In that case, we have to increment the
         point value depending of the previous time type:
-        
+
         * current is starting, previous is ending, increment of 1
         * current is ending, previous is ending, increment of 2
         """
