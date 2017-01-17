@@ -7,6 +7,7 @@ autodetect: yes
 ignore-paths:
     - runtests.py
     - ch02/bytecode/
+    - ch13/practice/questions.py
 
 ignore-patterns:
     # Ignore everything is not in chXX/practice
