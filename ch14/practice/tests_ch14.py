@@ -11,10 +11,7 @@ class FileFinderGenTestCase(unittest.TestCase):
     def test_py_extension(self):
         g = file_finder_gen.file_finder('*.py', DIR)
         self.assertTrue(isinstance(g, types.GeneratorType))
-        expected = [
-            os.path.join(DIR, 'file1.py'),
-            os.path.join(DIR, 'file2.py'),
-            os.path.join(DIR, 'file3.py')]
+        expected = ['file1.py', 'file2.py', 'file3.py']
         self.assertListEqual(sorted(list(g)), expected)
 
 
@@ -23,10 +20,7 @@ class FileFinderListTestCase(unittest.TestCase):
     def test_py_extension(self):
         result = file_finder_list.file_finder('*.py', DIR)
         self.assertTrue(isinstance(result, list))
-        expected = [
-            os.path.join(DIR, 'file1.py'),
-            os.path.join(DIR, 'file2.py'),
-            os.path.join(DIR, 'file3.py')]
+        expected = ['file1.py', 'file2.py', 'file3.py']
         self.assertListEqual(sorted(result), expected)
 
 
