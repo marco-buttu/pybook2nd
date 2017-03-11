@@ -1,31 +1,34 @@
-import urllib.request
+import os
+import types
 import unittest
-import subprocess
-from pathlib import Path
+from ch14.practice import file_finder_gen, file_finder_list
 
-ROOTDIR = Path(__file__).parent
-FILES = ['peps.py', 'peps_threads.py', 'peps_processes.py']
+DIR = os.path.join(os.path.dirname(file_finder_gen.__file__), 'mydir')
 
 
-class TestTimestats(unittest.TestCase):
+class FileFinderGenTestCase(unittest.TestCase):
 
-    def setUp(self):
-        self.cmds = []
-        for file in FILES:
-            script = str(ROOTDIR.joinpath(file))
-            self.cmds.append(['python', script])
+    def test_py_extension(self):
+        g = file_finder_gen.file_finder('*.py', DIR)
+        self.assertTrue(isinstance(g, types.GeneratorType))
+        expected = [
+            os.path.join(DIR, 'file1.py'),
+            os.path.join(DIR, 'file2.py'),
+            os.path.join(DIR, 'file3.py')]
+        self.assertListEqual(sorted(list(g)), expected)
 
-    def test(self):
-        BASE_PATH = 'https://www.python.org/dev/peps'
-        counter = 0
-        for code in (7, 20):
-            r = urllib.request.urlopen(
-                f'{BASE_PATH}/pep-{code:#04d}')
-            counter += len(r.read())
-        for cmd in self.cmds:
-            out = subprocess.check_output(cmd)
-            length = int(out.split()[-2])
-            self.assertEqual(length, counter)
+
+class FileFinderListTestCase(unittest.TestCase):
+
+    def test_py_extension(self):
+        result = file_finder_list.file_finder('*.py', DIR)
+        self.assertTrue(isinstance(result, list))
+        expected = [
+            os.path.join(DIR, 'file1.py'),
+            os.path.join(DIR, 'file2.py'),
+            os.path.join(DIR, 'file3.py')]
+        self.assertListEqual(sorted(result), expected)
+
 
 
 if __name__ == '__main__':
